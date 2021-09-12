@@ -1,10 +1,17 @@
 import express from "express";
+import { port } from "./config/index";
+import logger from "./utils/logger";
+import connectToDB from "./database/connect";
 
 const app = express();
 
-const port = "3000";
+connectToDB();
+
 const server = app.listen(port, () => {
-  console.log(`Server is currently running at port ${port}`);
+  logger.info(`
+  ###########################################
+  Server is currently running at port ${port}
+  ###########################################`);
 });
 
 export default server;
