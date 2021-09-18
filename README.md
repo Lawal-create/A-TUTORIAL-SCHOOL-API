@@ -20,7 +20,8 @@ To run the app locally, follow the steps below:
 2. After cloning, navigate into the repo using:
 
    ```
-   cd yaarnboxmax_api
+   cd A-TUTORIAL-SCHOOL-API
+
    ```
 
 3. Install the dependencies in the package.json using the command:
