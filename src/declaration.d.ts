@@ -5,5 +5,13 @@ declare namespace NodeJS {
     NODE_ENV: "development" | "production" | "test";
     PORT: string;
     MONGO_URI: string;
+    AWS_ACCESS_ID: string;
+    AWS_ACCESS_KEY: string;
+    AWS_BUCKET_NAME: string;
+    JWT_SECRET: string;
+    JWT_EXPIRES_IN: string;
+    BCRYPT_SALT: string;
+    REFRESH_TOKEN_EXPIRES_IN: string;
+    PASSWORD_RESET_TOKEN_EXPIRES_IN: string;
   }
 }
