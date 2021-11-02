@@ -1,5 +1,5 @@
 # A-TUTORIAL-SCHOOL-API
-A tutorial school api for handling various functionalities that a lesson tutorial will need.
+A tutorial school api for handling various functionalities that a lesson tutorial will need to manage their teachers and students.
 
 ## Getting Started
 
