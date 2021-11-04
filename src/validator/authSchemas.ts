@@ -1,7 +1,8 @@
 import Joi from "joi";
 import {
   email,
-  name,
+  firstName,
+  lastName,
   password,
   passwordConfirm,
   phoneNumber,
@@ -11,15 +12,14 @@ import {
 
 export const signupValidator = Joi.object({
   email,
-  name,
+  firstName,
+  lastName,
   password,
   passwordConfirm,
   role,
   phoneNumber,
   gender,
   dateOfBirth: Joi.date().max("2004-01-1").iso(),
-  location: Joi.string(),
-  companyName: Joi.string(),
   profileImageUrl: Joi.string()
 });
 
@@ -44,18 +44,4 @@ export const verifyAccountValidator = Joi.object({
   verifyToken: Joi.string().required().messages({
     "any.required": "Verification token is required"
   })
-});
-
-const code = Joi.string().required().messages({
-  "any.required": "Code is required"
-});
-
-// redirectURI: Joi.string().required().uri().messages({
-//   "any.required": "Redirect URI is required",
-//   "any.uri": "Redirect URI must be a valid link"
-// })
-
-export const socialLoginValidator = Joi.object({
-  role,
-  code
 });

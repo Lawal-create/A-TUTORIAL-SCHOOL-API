@@ -15,8 +15,11 @@ export const password = Joi.string().required().min(8).messages({
   "any.required": "Password is required"
 });
 
-export const name = Joi.string().required().messages({
-  "any.required": "Name is required"
+export const firstName = Joi.string().required().messages({
+  "any.required": "First Name is required"
+});
+export const lastName = Joi.string().required().messages({
+  "any.required": "Last Name is required"
 });
 
 export const phoneNumber = Joi.string()
