@@ -13,5 +13,11 @@ declare namespace NodeJS {
     BCRYPT_SALT: string;
     REFRESH_TOKEN_EXPIRES_IN: string;
     PASSWORD_RESET_TOKEN_EXPIRES_IN: string;
+    NODEMAILER_USER: string;
+    CLIENT_ID: string;
+    CLIENT_SECRET: string;
+    REFRESH_TOKEN: string;
+    REDIRECT_URL: string;
+    FRONTENDBASEURL: string;
   }
 }

@@ -74,6 +74,8 @@ export interface IBasicUser extends TimeStamps {
   lastName: string;
   email: string;
   profileImageUrl: string;
+  gender: string;
+  role: string;
 }
 
 export const getBasicUserDetails = (user: IUser): IBasicUser => {
@@ -81,6 +83,8 @@ export const getBasicUserDetails = (user: IUser): IBasicUser => {
     _id,
     firstName,
     lastName,
+    role,
+    gender,
     profileImageUrl,
     email,
     createdAt,
@@ -93,6 +97,8 @@ export const getBasicUserDetails = (user: IUser): IBasicUser => {
     lastName,
     profileImageUrl,
     email,
+    role,
+    gender,
     createdAt,
     updatedAt
   };
