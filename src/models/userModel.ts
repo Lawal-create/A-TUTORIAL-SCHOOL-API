@@ -10,7 +10,7 @@ export interface IUser extends Document, TimeStamps {
   password: string;
   phoneNumber: string;
   profileImageUrl: string;
-  passwordResetToken: string;
+  passwordResetToken: string | null;
   passwordResetExpires: Date | null | string;
   passwordChangedAt: Date | null;
   banned: boolean;
@@ -20,7 +20,7 @@ export interface IUser extends Document, TimeStamps {
   verified: boolean;
   verifyToken?: string;
   verifyTokenExpires?: Date | string;
-  gender: "male" | "female" | "other" | null | string;
+  gender: "male" | "female" | "other" | string;
   dateOfBirth: Date | null;
   totalReward: number;
   totalClaimedReward: number;
@@ -61,7 +61,8 @@ const UserSchema: Schema = new Schema(
     phoneNumber: {
       ...getTypeAndDefaultValue(String, null),
       unique: true,
-      sparse: true
+      sparse: true,
+      required: [true, "Phone Number is required"]
     },
     createdBy: {
       type: Schema.Types.ObjectId,

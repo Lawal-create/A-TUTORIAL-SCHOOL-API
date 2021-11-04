@@ -15,3 +15,9 @@ export const refreshTokenExpiresIn =
   Number(process.env.REFRESH_TOKEN_EXPIRES_IN) || 0;
 export const resetTokenExpiresIn =
   Number(process.env.PASSWORD_RESET_TOKEN_EXPIRES_IN) || 0;
+export const nodemailerUser = process.env.NODEMAILER_USER || "";
+export const clientId = process.env.CLIENT_ID || "";
+export const clientSecret = process.env.CLIENT_SECRET || "";
+export const refreshToken = process.env.REFRESH_TOKEN || "";
+export const redirectUrl = process.env.REDIRECT_URL || "";
+export const frontendBaseUrl = process.env.FRONTENDBASEURL || "";
