@@ -1,6 +1,4 @@
 import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
-import { MongoError } from "mongodb";
-import { Error as MongooseError } from "mongoose";
 import { AxiosError } from "axios";
 import { deleteSingleFile, deleteMultipleFiles } from "../../utils/aws";
 import logger from "../../utils/logger";
@@ -11,7 +9,7 @@ import { JsonWebTokenError } from "jsonwebtoken";
 import { UploadFile } from "../../types/global";
 
 const errorHandler = (
-  err: ErrorRequestHandler | MongoError | AxiosError,
+  err: ErrorRequestHandler | AxiosError,
   req: Request,
   res: Response,
   next: NextFunction
@@ -22,30 +20,6 @@ const errorHandler = (
   if (err instanceof ApiError) {
     message = err.message;
     errCode = err.code;
-  } else if (err instanceof MongooseError.CastError) {
-    //handle mongoose cast error
-    message = `Invalid ${err.path}: ${err.value}.`;
-    errCode = 400;
-  } else if (err instanceof MongooseError.ValidationError) {
-    //handle mongoose field validation error
-    const errors: string[] = Object.values(err.errors).map(
-      (
-        error:
-          | MongooseError.CastError
-          | MongooseError.ValidationError
-          | MongooseError.ValidatorError
-      ) => error.message
-    );
-
-    message = `Invalid input data. ${errors.join(". ")}`;
-    errCode = 400;
-  } else if ((err as MongoError).code === 11000) {
-    //handle mongoose duplicate field errors
-    const value: string =
-      (err as MongoError).errmsg?.match(/(["'])(\\?.)*?\1/)?.[0] || "";
-
-    message = `Duplicate field value: ${value}. Please use another value!`;
-    errCode = 400;
   } else if ((err as AxiosError).isAxiosError) {
     //handle axios errors
     if ((err as AxiosError).response)

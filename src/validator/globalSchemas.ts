@@ -1,5 +1,4 @@
 import Joi from "joi";
-import { checkMongoIdMethod } from "../utils/helpers/checkMongoId";
 
 export const emailRegex =
   /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
@@ -64,34 +63,6 @@ export const startTime = date
 export const endTime = date.min(Joi.ref("startTime")).messages({
   "any.only": "End time must be greater than start time"
 });
-
-export const idParamValidator = (id: string): Joi.ObjectSchema => {
-  return Joi.object({
-    [id]: Joi.string()
-      .required()
-      .custom(checkMongoIdMethod, "Mongo ID validation")
-      .messages({
-        "any.required": `${id} is required`,
-        "any.invalid": `${id} is invalid`
-      })
-  });
-};
-
-export const idValidator = (id: string): Joi.StringSchema => {
-  return Joi.string()
-    .custom(checkMongoIdMethod, "Mongo ID validation")
-    .messages({
-      "any.invalid": `${id} is invalid`
-    });
-};
-
-export const stringRequiredValidator = (name: string): Joi.StringSchema => {
-  return Joi.string()
-    .required()
-    .messages({
-      "any.required": `${name} is required`
-    });
-};
 
 export const queryParamsValidator = Joi.object({
   page: Joi.number().min(1),

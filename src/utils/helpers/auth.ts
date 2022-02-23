@@ -1,6 +1,5 @@
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
-import User, { IUser } from "../../models/userModel";
 import { CookieOptions, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { TimeStamps } from "../../types/global";
@@ -17,16 +16,6 @@ export const generateHashedValue = (value: string): string => {
 
 export const checkValidity = (value: string, compareValue: string): boolean => {
   return bcrypt.compareSync(value, compareValue);
-};
-
-//to check if a given field value already exists in db
-export const checkExisting = async (
-  field: string,
-  value: string
-): Promise<boolean> => {
-  const existingUser = await User.findOne({ [field]: value });
-
-  return existingUser ? true : false;
 };
 
 export interface IJWToken {
@@ -65,9 +54,6 @@ export const generateAvatarUrl = (name: string): string => {
   return `https://ui-avatars.com/api?name=${name}`;
 };
 
-// export const userBasicPaths =
-//   "name companyName email role profileImageUrl phoneNumber verified phoneVerified oneSignalId";
-
 export interface IBasicUser extends TimeStamps {
   _id: string;
   firstName: string;
@@ -77,29 +63,3 @@ export interface IBasicUser extends TimeStamps {
   gender: string;
   role: string;
 }
-
-export const getBasicUserDetails = (user: IUser): IBasicUser => {
-  const {
-    _id,
-    firstName,
-    lastName,
-    role,
-    gender,
-    profileImageUrl,
-    email,
-    createdAt,
-    updatedAt
-  } = user;
-
-  return {
-    _id,
-    firstName,
-    lastName,
-    profileImageUrl,
-    email,
-    role,
-    gender,
-    createdAt,
-    updatedAt
-  };
-};
