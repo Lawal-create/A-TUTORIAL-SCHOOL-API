@@ -4,7 +4,11 @@ declare namespace NodeJS {
   export interface ProcessEnv {
     NODE_ENV: "development" | "production" | "test";
     PORT: string;
-    MONGO_URI: string;
+    DB_NAME: string;
+    DB_USERNAME: string;
+    DB_PASSWORD: string;
+    DB_DIALECT: string;
+    DB_HOST: string;
     AWS_ACCESS_ID: string;
     AWS_ACCESS_KEY: string;
     AWS_BUCKET_NAME: string;

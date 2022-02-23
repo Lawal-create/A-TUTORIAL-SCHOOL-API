@@ -4,7 +4,11 @@ dotenv.config();
 
 export const port = process.env.PORT;
 export const nodeEnv = process.env.NODE_ENV;
-export const mongoURI = process.env.MONGO_URI || "";
+export const dbName = process.env.DB_NAME || "";
+export const dbUsername = process.env.DB_USERNAME || "";
+export const dbPassword = process.env.DB_PASSWORD || "";
+export const dbDialect = process.env.DB_DIALECT || "";
+export const dbHost = process.env.DB_HOST || "";
 export const awsID = process.env.AWS_ACCESS_ID || "";
 export const awsKey = process.env.AWS_ACCESS_KEY || "";
 export const awsBucket = process.env.AWS_BUCKET_NAME || "";
